@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:phone_app/catalog/phone_item_model.dart';
 import 'package:phone_app/catalog/phone_item_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../locale_provider.dart';
 
 class CatalogScreen extends StatelessWidget {
   CatalogScreen({Key? key}) : super(key: key);
 
   final phonesList = PhoneItem.getList();
+
+  var localeRU = const Locale("ru");
+  var localeEN = const Locale("en");
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +20,42 @@ class CatalogScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.orange,
         elevation: 0,
-        title: Text(
-          AppLocalizations.of(context)!.catalog,
-          style: const TextStyle(
-            fontSize: 24,
-          ),
-        ),
+        title: Row(
+          children: [
+            Text(
+              AppLocalizations.of(context)!.catalog,
+              style: const TextStyle(
+                fontSize: 24,
+              ),
+            ),
+            const Spacer(),
+            InkWell(
+              onTap: () {
+                context.read<LocaleProvider>().setLocale(localeRU);
+              },
+              child: Row(
+                children: const [
+                  Icon(Icons.language, color: Colors.white),
+                  Text('RU', style: TextStyle(color: Colors.white))
+                ],
+              )
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            InkWell(
+                onTap: () {
+                  context.read<LocaleProvider>().setLocale(localeEN);
+                },
+                child: Row(
+                  children: const [
+                    Icon(Icons.language, color: Colors.white),
+                    Text('EN', style: TextStyle(color: Colors.white))
+                  ],
+                )
+            ),
+          ],
+        )
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
