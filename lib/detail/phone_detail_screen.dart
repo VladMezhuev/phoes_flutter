@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phone_app/catalog/phone_item_model.dart';
+import '../gen/assets.gen.dart';
 
 class PhoneDetailScreen extends StatelessWidget {
   const PhoneDetailScreen({
@@ -70,11 +71,11 @@ class PhoneDetailScreen extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    SliderImage(path: 'assets/slide_2.jpg'),
-                    SliderImage(path: 'assets/slide_3.jpg'),
-                    SliderImage(path: 'assets/slide_6.jpg'),
-                    SliderImage(path: 'assets/slide_5.jpg'),
+                  children: [
+                    SliderImage(path: Assets.images.slide2.path),
+                    SliderImage(path: Assets.images.slide3.path),
+                    SliderImage(path: Assets.images.slide5.path),
+                    SliderImage(path: Assets.images.slide6.path),
                   ],
                 ),
                 const SizedBox(
