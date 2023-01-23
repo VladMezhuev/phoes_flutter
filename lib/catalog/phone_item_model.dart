@@ -1,17 +1,16 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import '../gen/assets.gen.dart';
 
-class PhoneItem {
-  final int id;
-  final String image;
-  final String title;
-  final bool isFavorite;
+part 'phone_item_model.freezed.dart';
 
-  PhoneItem({
-    required this.id,
-    required this.image,
-    required this.title,
-    this.isFavorite = false,
-  });
+@unfreezed
+class PhoneItem with _$PhoneItem {
+  factory PhoneItem({
+    required final int id,
+    required final String title,
+    required final String image,
+    @Default(false) bool isFavorite,
+  }) = _PhoneItem;
 
   static List<PhoneItem> getList() {
     return [
