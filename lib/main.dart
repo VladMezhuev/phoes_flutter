@@ -30,13 +30,7 @@ void main() => runApp(
         },
       );
     },
-  )
-  //
-  //   supportedLocales: const [
-  //     Locale('ru', ''),
-  //     Locale('en', ''),
-  //   ],
-  // )
+  ),
 );
 
 final _router = GoRouter(
