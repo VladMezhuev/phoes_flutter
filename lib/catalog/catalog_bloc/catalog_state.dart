@@ -1,14 +1,8 @@
 part of 'catalog_bloc.dart';
 
-@immutable
-abstract class CatalogState {}
-
-class CatalogInitial extends CatalogState {}
-
-class CatalogPhonesState extends CatalogState {
-  final List<PhoneItem> phones;
-
-  CatalogPhonesState(this.phones);
+@freezed
+class CatalogState with _$CatalogState {
+  const factory CatalogState([
+    @Default([]) List<PhoneItem> phones,
+  ]) = _CatalogState;
 }
-
-class CatalogLoadingState extends CatalogState {}

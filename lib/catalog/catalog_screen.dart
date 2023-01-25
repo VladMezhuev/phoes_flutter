@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:phone_app/catalog/catalog_bloc/catalog_bloc.dart';
 import 'package:phone_app/catalog/phone_item_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../locale_provider.dart';
+import 'catalog_bloc/catalog_bloc.dart';
 
 class CatalogScreen extends StatelessWidget {
   const CatalogScreen({Key? key}) : super(key: key);
@@ -14,10 +14,8 @@ class CatalogScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final catalogBloc = CatalogBloc()
-      ..add(CatalogGetPhonesEvent());
     return BlocProvider<CatalogBloc>(
-      create: (context) => catalogBloc,
+      create: (context) => CatalogBloc()..add(const GetPhonesList()),
       child: Builder(
         builder: (context) {
           return Scaffold(
@@ -63,38 +61,32 @@ class CatalogScreen extends StatelessWidget {
                   ],
                 )
             ),
-            body: BlocProvider(
-              create: (context) => catalogBloc,
-              child: BlocBuilder<CatalogBloc, CatalogState>(
-                bloc: catalogBloc,
+            body: BlocBuilder<CatalogBloc, CatalogState>(
+                bloc: CatalogBloc(),
                 builder: (context, state) {
-                  if (state is CatalogPhonesState) {
-                    return Container(
-                      padding: const EdgeInsets.all(10),
-                      child: GridView.builder(
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                            mainAxisExtent: 311,
-                          ),
-                          itemCount: state.phones.length,
-                          itemBuilder: (context, index) {
-                            return PhoneItemCard(
-                                phone: state.phones[index]
-                              // phone: phonesList[index],
-                            );
-                          }
-                      )
-                    );
-                  } else {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
+
+                  return Container(
+                    padding: const EdgeInsets.all(10),
+                    child: GridView.builder(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                          mainAxisExtent: 311,
+                        ),
+                        itemCount: state.phones.length,
+                        itemBuilder: (context, index) {
+                          return PhoneItemCard(
+                              phone: state.phones[index]
+                            // phone: phonesList[index],
+                          );
+                        }
+                    )
+                  );
+
                 },
               ),
-            ),
+
           );
         }
       ),

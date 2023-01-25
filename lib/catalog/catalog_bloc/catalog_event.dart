@@ -1,6 +1,7 @@
 part of 'catalog_bloc.dart';
 
-@immutable
-abstract class CatalogEvent {}
+@freezed
+class CatalogEvent with _$CatalogEvent {
+  const factory CatalogEvent.getPhonesList() = GetPhonesList;
+}
 
-class CatalogGetPhonesEvent extends CatalogEvent {}

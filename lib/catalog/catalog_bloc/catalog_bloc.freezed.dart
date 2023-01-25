@@ -1,0 +1,290 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'catalog_bloc.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$CatalogEvent {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getPhonesList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getPhonesList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getPhonesList,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPhonesList value) getPhonesList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetPhonesList value)? getPhonesList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPhonesList value)? getPhonesList,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CatalogEventCopyWith<$Res> {
+  factory $CatalogEventCopyWith(
+          CatalogEvent value, $Res Function(CatalogEvent) then) =
+      _$CatalogEventCopyWithImpl<$Res, CatalogEvent>;
+}
+
+/// @nodoc
+class _$CatalogEventCopyWithImpl<$Res, $Val extends CatalogEvent>
+    implements $CatalogEventCopyWith<$Res> {
+  _$CatalogEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$GetPhonesListCopyWith<$Res> {
+  factory _$$GetPhonesListCopyWith(
+          _$GetPhonesList value, $Res Function(_$GetPhonesList) then) =
+      __$$GetPhonesListCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetPhonesListCopyWithImpl<$Res>
+    extends _$CatalogEventCopyWithImpl<$Res, _$GetPhonesList>
+    implements _$$GetPhonesListCopyWith<$Res> {
+  __$$GetPhonesListCopyWithImpl(
+      _$GetPhonesList _value, $Res Function(_$GetPhonesList) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetPhonesList implements GetPhonesList {
+  const _$GetPhonesList();
+
+  @override
+  String toString() {
+    return 'CatalogEvent.getPhonesList()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetPhonesList);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getPhonesList,
+  }) {
+    return getPhonesList();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getPhonesList,
+  }) {
+    return getPhonesList?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getPhonesList,
+    required TResult orElse(),
+  }) {
+    if (getPhonesList != null) {
+      return getPhonesList();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPhonesList value) getPhonesList,
+  }) {
+    return getPhonesList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetPhonesList value)? getPhonesList,
+  }) {
+    return getPhonesList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPhonesList value)? getPhonesList,
+    required TResult orElse(),
+  }) {
+    if (getPhonesList != null) {
+      return getPhonesList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetPhonesList implements CatalogEvent {
+  const factory GetPhonesList() = _$GetPhonesList;
+}
+
+/// @nodoc
+mixin _$CatalogState {
+  List<PhoneItem> get phones => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $CatalogStateCopyWith<CatalogState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CatalogStateCopyWith<$Res> {
+  factory $CatalogStateCopyWith(
+          CatalogState value, $Res Function(CatalogState) then) =
+      _$CatalogStateCopyWithImpl<$Res, CatalogState>;
+  @useResult
+  $Res call({List<PhoneItem> phones});
+}
+
+/// @nodoc
+class _$CatalogStateCopyWithImpl<$Res, $Val extends CatalogState>
+    implements $CatalogStateCopyWith<$Res> {
+  _$CatalogStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phones = null,
+  }) {
+    return _then(_value.copyWith(
+      phones: null == phones
+          ? _value.phones
+          : phones // ignore: cast_nullable_to_non_nullable
+              as List<PhoneItem>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_CatalogStateCopyWith<$Res>
+    implements $CatalogStateCopyWith<$Res> {
+  factory _$$_CatalogStateCopyWith(
+          _$_CatalogState value, $Res Function(_$_CatalogState) then) =
+      __$$_CatalogStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<PhoneItem> phones});
+}
+
+/// @nodoc
+class __$$_CatalogStateCopyWithImpl<$Res>
+    extends _$CatalogStateCopyWithImpl<$Res, _$_CatalogState>
+    implements _$$_CatalogStateCopyWith<$Res> {
+  __$$_CatalogStateCopyWithImpl(
+      _$_CatalogState _value, $Res Function(_$_CatalogState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phones = null,
+  }) {
+    return _then(_$_CatalogState(
+      null == phones
+          ? _value._phones
+          : phones // ignore: cast_nullable_to_non_nullable
+              as List<PhoneItem>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_CatalogState implements _CatalogState {
+  const _$_CatalogState([final List<PhoneItem> phones = const []])
+      : _phones = phones;
+
+  final List<PhoneItem> _phones;
+  @override
+  @JsonKey()
+  List<PhoneItem> get phones {
+    if (_phones is EqualUnmodifiableListView) return _phones;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_phones);
+  }
+
+  @override
+  String toString() {
+    return 'CatalogState(phones: $phones)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CatalogState &&
+            const DeepCollectionEquality().equals(other._phones, _phones));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_phones));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CatalogStateCopyWith<_$_CatalogState> get copyWith =>
+      __$$_CatalogStateCopyWithImpl<_$_CatalogState>(this, _$identity);
+}
+
+abstract class _CatalogState implements CatalogState {
+  const factory _CatalogState([final List<PhoneItem> phones]) = _$_CatalogState;
+
+  @override
+  List<PhoneItem> get phones;
+  @override
+  @JsonKey(ignore: true)
+  _$$_CatalogStateCopyWith<_$_CatalogState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
