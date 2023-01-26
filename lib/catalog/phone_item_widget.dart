@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:phone_app/catalog/catalog_bloc/catalog_bloc.dart';
 import 'package:phone_app/catalog/phone_item_model.dart';
 
 class PhoneItemCard extends StatelessWidget {
@@ -30,8 +32,34 @@ class PhoneItemCard extends StatelessWidget {
               child: _PhoneCardImageWidget(image: phone.image),
             ),
             _PhoneCartTitleWidget(phone: phone),
-            _PhoneCardActionsWidget(isFavorite: phone.isFavorite)
-            // _PhoneCardActionsWidget(isFavorite: phone.isFavorite)
+            Container(
+              decoration: const BoxDecoration(
+                color: Colors.orange,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      context.read<CatalogBloc>().add(TogglePhoneFavorite(phone.id));
+                    },
+                    icon: setFavoriteIcon(phone.isFavorite),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.add_shopping_cart,
+                      color: Colors.white,
+                      size: 28,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -94,50 +122,42 @@ class _PhoneCartTitleWidget extends StatelessWidget {
   }
 }
 
-class _PhoneCardActionsWidget extends StatefulWidget {
-  _PhoneCardActionsWidget({Key? key, required this.isFavorite})
-      : super(key: key);
 
-  bool isFavorite;
-
-  @override
-  State<_PhoneCardActionsWidget> createState() => _PhoneCardActionsWidgetState();
-}
-
-class _PhoneCardActionsWidgetState extends State<_PhoneCardActionsWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          color: Colors.orange,
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(20),
-            bottomRight: Radius.circular(20),
-          )),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          IconButton(
-            onPressed: () {
-              setState(() {
-                widget.isFavorite = !widget.isFavorite;
-              });
-            },
-            icon: setFavoriteIcon(widget.isFavorite),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.add_shopping_cart,
-              color: Colors.white,
-              size: 28,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+// class _PhoneCardActionsWidgetState extends State<_PhoneCardActionsWidget> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       decoration: const BoxDecoration(
+//         color: Colors.orange,
+//         borderRadius: BorderRadius.only(
+//           bottomLeft: Radius.circular(20),
+//           bottomRight: Radius.circular(20),
+//         ),
+//       ),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceAround,
+//         children: [
+//           IconButton(
+//             onPressed: () {
+//               setState(() {
+//                 widget.isFavorite = !widget.isFavorite;
+//               });
+//             },
+//             icon: setFavoriteIcon(widget.isFavorite),
+//           ),
+//           IconButton(
+//             onPressed: () {},
+//             icon: const Icon(
+//               Icons.add_shopping_cart,
+//               color: Colors.white,
+//               size: 28,
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 Widget setFavoriteIcon(bool isFavorite) {
   Widget favIcon = const Icon(

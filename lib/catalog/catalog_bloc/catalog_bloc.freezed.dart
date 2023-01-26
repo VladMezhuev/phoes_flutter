@@ -19,32 +19,38 @@ mixin _$CatalogEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPhonesList,
+    required TResult Function(int id) togglePhoneFavorite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getPhonesList,
+    TResult? Function(int id)? togglePhoneFavorite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPhonesList,
+    TResult Function(int id)? togglePhoneFavorite,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetPhonesList value) getPhonesList,
+    required TResult Function(TogglePhoneFavorite value) togglePhoneFavorite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPhonesList value)? getPhonesList,
+    TResult? Function(TogglePhoneFavorite value)? togglePhoneFavorite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPhonesList value)? getPhonesList,
+    TResult Function(TogglePhoneFavorite value)? togglePhoneFavorite,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$GetPhonesList implements GetPhonesList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPhonesList,
+    required TResult Function(int id) togglePhoneFavorite,
   }) {
     return getPhonesList();
   }
@@ -115,6 +122,7 @@ class _$GetPhonesList implements GetPhonesList {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getPhonesList,
+    TResult? Function(int id)? togglePhoneFavorite,
   }) {
     return getPhonesList?.call();
   }
@@ -123,6 +131,7 @@ class _$GetPhonesList implements GetPhonesList {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPhonesList,
+    TResult Function(int id)? togglePhoneFavorite,
     required TResult orElse(),
   }) {
     if (getPhonesList != null) {
@@ -135,6 +144,7 @@ class _$GetPhonesList implements GetPhonesList {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetPhonesList value) getPhonesList,
+    required TResult Function(TogglePhoneFavorite value) togglePhoneFavorite,
   }) {
     return getPhonesList(this);
   }
@@ -143,6 +153,7 @@ class _$GetPhonesList implements GetPhonesList {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPhonesList value)? getPhonesList,
+    TResult? Function(TogglePhoneFavorite value)? togglePhoneFavorite,
   }) {
     return getPhonesList?.call(this);
   }
@@ -151,6 +162,7 @@ class _$GetPhonesList implements GetPhonesList {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPhonesList value)? getPhonesList,
+    TResult Function(TogglePhoneFavorite value)? togglePhoneFavorite,
     required TResult orElse(),
   }) {
     if (getPhonesList != null) {
@@ -165,7 +177,142 @@ abstract class GetPhonesList implements CatalogEvent {
 }
 
 /// @nodoc
+abstract class _$$TogglePhoneFavoriteCopyWith<$Res> {
+  factory _$$TogglePhoneFavoriteCopyWith(_$TogglePhoneFavorite value,
+          $Res Function(_$TogglePhoneFavorite) then) =
+      __$$TogglePhoneFavoriteCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$TogglePhoneFavoriteCopyWithImpl<$Res>
+    extends _$CatalogEventCopyWithImpl<$Res, _$TogglePhoneFavorite>
+    implements _$$TogglePhoneFavoriteCopyWith<$Res> {
+  __$$TogglePhoneFavoriteCopyWithImpl(
+      _$TogglePhoneFavorite _value, $Res Function(_$TogglePhoneFavorite) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$TogglePhoneFavorite(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TogglePhoneFavorite implements TogglePhoneFavorite {
+  const _$TogglePhoneFavorite(this.id);
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'CatalogEvent.togglePhoneFavorite(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TogglePhoneFavorite &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TogglePhoneFavoriteCopyWith<_$TogglePhoneFavorite> get copyWith =>
+      __$$TogglePhoneFavoriteCopyWithImpl<_$TogglePhoneFavorite>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getPhonesList,
+    required TResult Function(int id) togglePhoneFavorite,
+  }) {
+    return togglePhoneFavorite(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getPhonesList,
+    TResult? Function(int id)? togglePhoneFavorite,
+  }) {
+    return togglePhoneFavorite?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getPhonesList,
+    TResult Function(int id)? togglePhoneFavorite,
+    required TResult orElse(),
+  }) {
+    if (togglePhoneFavorite != null) {
+      return togglePhoneFavorite(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPhonesList value) getPhonesList,
+    required TResult Function(TogglePhoneFavorite value) togglePhoneFavorite,
+  }) {
+    return togglePhoneFavorite(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetPhonesList value)? getPhonesList,
+    TResult? Function(TogglePhoneFavorite value)? togglePhoneFavorite,
+  }) {
+    return togglePhoneFavorite?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPhonesList value)? getPhonesList,
+    TResult Function(TogglePhoneFavorite value)? togglePhoneFavorite,
+    required TResult orElse(),
+  }) {
+    if (togglePhoneFavorite != null) {
+      return togglePhoneFavorite(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TogglePhoneFavorite implements CatalogEvent {
+  const factory TogglePhoneFavorite(final int id) = _$TogglePhoneFavorite;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$TogglePhoneFavoriteCopyWith<_$TogglePhoneFavorite> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CatalogState {
+  bool get isLoading => throw _privateConstructorUsedError;
   List<PhoneItem> get phones => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -179,7 +326,7 @@ abstract class $CatalogStateCopyWith<$Res> {
           CatalogState value, $Res Function(CatalogState) then) =
       _$CatalogStateCopyWithImpl<$Res, CatalogState>;
   @useResult
-  $Res call({List<PhoneItem> phones});
+  $Res call({bool isLoading, List<PhoneItem> phones});
 }
 
 /// @nodoc
@@ -195,9 +342,14 @@ class _$CatalogStateCopyWithImpl<$Res, $Val extends CatalogState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoading = null,
     Object? phones = null,
   }) {
     return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       phones: null == phones
           ? _value.phones
           : phones // ignore: cast_nullable_to_non_nullable
@@ -214,7 +366,7 @@ abstract class _$$_CatalogStateCopyWith<$Res>
       __$$_CatalogStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PhoneItem> phones});
+  $Res call({bool isLoading, List<PhoneItem> phones});
 }
 
 /// @nodoc
@@ -228,9 +380,14 @@ class __$$_CatalogStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoading = null,
     Object? phones = null,
   }) {
     return _then(_$_CatalogState(
+      null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       null == phones
           ? _value._phones
           : phones // ignore: cast_nullable_to_non_nullable
@@ -242,9 +399,13 @@ class __$$_CatalogStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CatalogState implements _CatalogState {
-  const _$_CatalogState([final List<PhoneItem> phones = const []])
+  const _$_CatalogState(
+      [this.isLoading = false, final List<PhoneItem> phones = const []])
       : _phones = phones;
 
+  @override
+  @JsonKey()
+  final bool isLoading;
   final List<PhoneItem> _phones;
   @override
   @JsonKey()
@@ -256,7 +417,7 @@ class _$_CatalogState implements _CatalogState {
 
   @override
   String toString() {
-    return 'CatalogState(phones: $phones)';
+    return 'CatalogState(isLoading: $isLoading, phones: $phones)';
   }
 
   @override
@@ -264,12 +425,14 @@ class _$_CatalogState implements _CatalogState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CatalogState &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             const DeepCollectionEquality().equals(other._phones, _phones));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_phones));
+  int get hashCode => Object.hash(
+      runtimeType, isLoading, const DeepCollectionEquality().hash(_phones));
 
   @JsonKey(ignore: true)
   @override
@@ -279,8 +442,11 @@ class _$_CatalogState implements _CatalogState {
 }
 
 abstract class _CatalogState implements CatalogState {
-  const factory _CatalogState([final List<PhoneItem> phones]) = _$_CatalogState;
+  const factory _CatalogState(
+      [final bool isLoading, final List<PhoneItem> phones]) = _$_CatalogState;
 
+  @override
+  bool get isLoading;
   @override
   List<PhoneItem> get phones;
   @override
