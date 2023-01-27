@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:phone_app/catalog/phone_item_model.dart';
-import '../gen/assets.gen.dart';
+
+import '../../gen/assets.gen.dart';
+import '../catalog/phone_item_model.dart';
 
 class PhoneDetailScreen extends StatelessWidget {
   const PhoneDetailScreen({

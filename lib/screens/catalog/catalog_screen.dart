@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:phone_app/catalog/phone_item_widget.dart';
+import 'package:get_it/get_it.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phone_app/data/phones_repository.dart';
+import 'package:phone_app/screens/catalog/phone_item_widget.dart';
 
-import '../locale_provider.dart';
+import '../../l10n/locale_provider.dart';
 import 'catalog_bloc/catalog_bloc.dart';
 
 class CatalogScreen extends StatelessWidget {
-  const CatalogScreen({Key? key}) : super(key: key);
+
+  CatalogScreen({Key? key}) : super(key: key);
 
   final localeRU = const Locale("ru");
   final localeEN = const Locale("en");
 
+  final phonesRepository = GetIt.instance<PhonesRepository>();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CatalogBloc>(
-      create: (context) => CatalogBloc()..add(const GetPhonesList()),
+      create: (context) => CatalogBloc(phonesRepository: phonesRepository)..add(const GetPhonesList()),
       child: Builder(builder: (context) {
         return Scaffold(
           appBar: AppBar(

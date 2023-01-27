@@ -1,5 +1,6 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:phone_app/data/phones_repository.dart';
 
 import '../phone_item_model.dart';
 
@@ -8,8 +9,9 @@ part 'catalog_state.dart';
 part 'catalog_bloc.freezed.dart';
 
 class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
+  final PhonesRepository phonesRepository;
 
-  CatalogBloc() : super(const CatalogState()) {
+  CatalogBloc({required this.phonesRepository}) : super(const CatalogState()) {
     on<GetPhonesList>(_onGetPhonesList);
     on<TogglePhoneFavorite>(_onTogglePhoneFavorite);
   }
@@ -18,7 +20,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     emit(state.copyWith(isLoading: true));
     await Future.delayed(const Duration(seconds: 1));
     emit(state.copyWith(isLoading: false));
-    final phoneList = PhoneItem.getList();
+    final phoneList = phonesRepository.getPhones();
     emit(state.copyWith(phones: phoneList));
   }
 
