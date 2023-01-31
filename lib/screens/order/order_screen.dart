@@ -51,7 +51,7 @@ class OrderScreen extends StatelessWidget {
                               height: 20,
                             ),
                             TitleWidget(title: AppLocalizations.of(context).colorBlockTitle),
-                            const ColorRadioGroup(),
+                            ColorRadioGroup(currentRadio: state.color),
                             const SizedBox(
                               height: 20,
                             ),
@@ -60,7 +60,7 @@ class OrderScreen extends StatelessWidget {
                               height: 20,
                             ),
                             TitleWidget(title: AppLocalizations.of(context).deliveryBlockTitle),
-                            const DeliveryRadioGroup(),
+                            DeliveryRadioGroup(currentMethod: state.delivery),
                             TextFormField(
                               decoration: InputDecoration(
                                   hintText: AppLocalizations.of(context).deliveryAddressHintInput),
@@ -283,7 +283,9 @@ class _UserInfoState extends State<UserInfo> {
 }
 
 class ColorRadioGroup extends StatelessWidget {
-  const ColorRadioGroup({Key? key}) : super(key: key);
+  const ColorRadioGroup({Key? key, required this.currentRadio}) : super(key: key);
+
+  final String currentRadio;
 
   @override
   Widget build(BuildContext context) {
@@ -306,7 +308,7 @@ class ColorRadioGroup extends StatelessWidget {
               children: [
                 Radio(
                   value: value['value'],
-                  groupValue: context.watch<OrderBloc>().state.color,
+                  groupValue: currentRadio,
                   onChanged: (value) {
                     context.read<OrderBloc>().add(GetProductColor(value!));
                   },
@@ -322,7 +324,9 @@ class ColorRadioGroup extends StatelessWidget {
 }
 
 class DeliveryRadioGroup extends StatelessWidget {
-  const DeliveryRadioGroup({Key? key}) : super(key: key);
+  const DeliveryRadioGroup({Key? key, required this.currentMethod}) : super(key: key);
+
+  final String currentMethod;
 
   @override
   Widget build(BuildContext context) {
@@ -335,7 +339,7 @@ class DeliveryRadioGroup extends StatelessWidget {
       children: values.map((value) {
         return RadioListTile(
           value: value['value'],
-          groupValue: context.watch<OrderBloc>().state.delivery,
+          groupValue: currentMethod,
           onChanged: (value) {
             context.read<OrderBloc>().add(GetDeliveryMethod(value!));
           },
