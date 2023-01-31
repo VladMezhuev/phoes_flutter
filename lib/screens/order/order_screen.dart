@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:phone_app/data/order_repo.dart';
 import 'package:phone_app/screens/catalog/phone_item_model.dart';
 import 'package:phone_app/screens/order/order_bloc/order_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OrderScreen extends StatelessWidget {
   OrderScreen({Key? key, required this.model}) : super(key: key);
@@ -24,7 +25,8 @@ class OrderScreen extends StatelessWidget {
           listener: (context, state) {
             if (state.orderCreated) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text('Order created, color: ${state.color} name: ${state.name}, phone: ${state.phone}, delivery: ${state.delivery}'),
+                content: Text(
+                    'Order created, color: ${state.color} name: ${state.name}, phone: ${state.phone}, delivery: ${state.delivery}'),
                 duration: const Duration(seconds: 10),
               ));
               context.go('/');
@@ -53,9 +55,7 @@ class OrderScreen extends StatelessWidget {
                             const SizedBox(
                               height: 20,
                             ),
-
                             const UserInfo(),
-
                             const SizedBox(
                               height: 20,
                             ),
@@ -101,7 +101,9 @@ class OrderScreen extends StatelessWidget {
                                   flex: 2,
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      context.read<OrderBloc>().add(const CreateOrder());
+                                      context
+                                          .read<OrderBloc>()
+                                          .add(const CreateOrder());
                                     },
                                     style: ButtonStyle(
                                       backgroundColor:
@@ -247,7 +249,6 @@ class UserInfo extends StatefulWidget {
 }
 
 class _UserInfoState extends State<UserInfo> {
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -262,13 +263,12 @@ class _UserInfoState extends State<UserInfo> {
           },
         ),
         TextField(
-          decoration: const InputDecoration(
-            hintText: 'Телефон',
-          ),
-          onChanged: (value) {
-            context.read<OrderBloc>().add(GetUserPhone(value));
-          }
-        ),
+            decoration: const InputDecoration(
+              hintText: 'Телефон',
+            ),
+            onChanged: (value) {
+              context.read<OrderBloc>().add(GetUserPhone(value));
+            }),
         TextField(
           decoration: const InputDecoration(
             hintText: 'Электронная почта',
@@ -282,89 +282,68 @@ class _UserInfoState extends State<UserInfo> {
   }
 }
 
-class ColorRadioGroup extends StatefulWidget {
+class ColorRadioGroup extends StatelessWidget {
   const ColorRadioGroup({Key? key}) : super(key: key);
 
   @override
-  State<ColorRadioGroup> createState() => _ColorRadioGroupState();
-}
-
-class _ColorRadioGroupState extends State<ColorRadioGroup> {
-  static const values = [
-    {'title': 'Белый', 'value': 'white'},
-    {'title': 'Черный', 'value': 'black'},
-    {'title': 'Синий', 'value': 'blue'},
-    {'title': 'Золото', 'value': 'gold'},
-  ];
-  String selectedValue = values.first['value'].toString();
-
-  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: double.infinity,
-        child: Container(
-          padding: const EdgeInsets.all(0),
-          width: double.infinity,
-          child: colorRadios(),
-        ));
-  }
+    final values = [
+      {'title': AppLocalizations.of(context).whiteColor, 'value': 'white'},
+      {'title': AppLocalizations.of(context).blackColor, 'value': 'black'},
+      {'title': AppLocalizations.of(context).blueColor, 'value': 'blue'},
+      {'title': AppLocalizations.of(context).goldColor, 'value': 'gold'},
+    ];
 
-  Widget colorRadios() => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: values.map((value) {
-          return Row(
-            children: [
-              Radio(
-                value: value['value'],
-                groupValue: selectedValue,
-                onChanged: (value) {
-                  setState(() {
-                    selectedValue = value!;
-                  });
-                  context.read<OrderBloc>().add(GetProductColor(value!));
-                },
-                // onChanged: (value) => setState(() => selectedValue = value!),
-              ),
-              Text(value['title'].toString())
-            ],
-          );
-        }).toList(),
-      );
+    return SizedBox(
+      width: double.infinity,
+      child: Container(
+        padding: const EdgeInsets.all(0),
+        width: double.infinity,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: values.map((value) {
+            return Row(
+              children: [
+                Radio(
+                  value: value['value'],
+                  groupValue: context.watch<OrderBloc>().state.color,
+                  onChanged: (value) {
+                    context.read<OrderBloc>().add(GetProductColor(value!));
+                  },
+                ),
+                Text(value['title'].toString())
+              ],
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
 }
 
-class DeliveryRadioGroup extends StatefulWidget {
+class DeliveryRadioGroup extends StatelessWidget {
   const DeliveryRadioGroup({Key? key}) : super(key: key);
 
   @override
-  State<DeliveryRadioGroup> createState() => _DeliveryRadioGroupState();
-}
-
-class _DeliveryRadioGroupState extends State<DeliveryRadioGroup> {
-  static const values = [
-    {'title': 'Отделение новой почты', 'value': '0'},
-    {'title': 'Курьер', 'value': '1'},
-    {'title': 'Самовывоз', 'value': '2'},
-  ];
-  String selectedValue = values.first['value'].toString();
-
-  @override
   Widget build(BuildContext context) {
-    return deliveryRadios();
+    final values = [
+      {'title': AppLocalizations.of(context).postOfficeDelivery, 'value': '0'},
+      {'title': AppLocalizations.of(context).courierDelivery, 'value': '1'},
+      {'title': AppLocalizations.of(context).pickupDelivery, 'value': '2'},
+    ];
+    return Column(
+      children: values.map((value) {
+        return RadioListTile(
+          value: value['value'],
+          groupValue: context.watch<OrderBloc>().state.delivery,
+          onChanged: (value) {
+            context.read<OrderBloc>().add(GetDeliveryMethod(value!));
+          },
+          title: Text(value['title']!),
+        );
+      }).toList(),
+    );
   }
-
-  Widget deliveryRadios() => Column(
-        children: values.map((value) {
-          return RadioListTile(
-            value: value['value'],
-            groupValue: selectedValue,
-            onChanged: (value) {
-              setState(() => selectedValue = value!);
-              context.read<OrderBloc>().add(GetDeliveryMethod(value!));
-            },
-            title: Text(value['title']!),
-          );
-        }).toList(),
-      );
 }
 
 class CallCheckbox extends StatefulWidget {

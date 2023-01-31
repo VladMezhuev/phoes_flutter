@@ -41,7 +41,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
   }
 
   void _onGetDeliveryMethod(event, emit) {
-    emit(state.copyWith(color: event.color));
+    emit(state.copyWith(delivery: event.delivery));
   }
 
   void _onGetNeedToCall(event, emit) {

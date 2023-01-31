@@ -2,5 +2,35 @@
   "catalog": "Catalog",
   "@catalog": {
     "description": "Title of catalog screen"
+  },
+
+  "blackColor": "black",
+  "@blackColor": {
+    "description": "Black color"
+  },
+  "whiteColor": "white",
+  "@whiteColor": {
+    "description": "White color"
+  },
+  "blueColor": "blue",
+  "@blueColor": {
+    "description": "Blue color"
+  },
+  "goldColor": "gold",
+  "@goldColor": {
+    "description": "Gold color"
+  },
+
+  "postOfficeDelivery": "Post office",
+  "@postOfficeDelivery": {
+    "description": "post Office"
+  },
+  "courierDelivery": "Courier",
+  "@courierDelivery": {
+    "description": "Courier"
+  },
+  "pickupDelivery": "Pickup",
+  "@pickupDelivery": {
+    "description": "Pickup"
   }
 }

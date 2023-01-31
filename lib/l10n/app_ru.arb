@@ -2,5 +2,35 @@
   "catalog": "Каталог",
   "@catalog": {
     "description": "Title of catalog screen"
+  },
+
+  "blackColor": "Черный",
+  "@blackColor": {
+    "description": "Black color"
+  },
+  "whiteColor": "Белый",
+  "@whiteColor": {
+    "description": "White color"
+  },
+  "blueColor": "Синий",
+  "@blueColor": {
+    "description": "Blue color"
+  },
+  "goldColor": "Золото",
+  "@goldColor": {
+    "description": "Gold color"
+  },
+
+  "postOfficeDelivery": "Отделение новой почты",
+  "@postOfficeDelivery": {
+    "description": "post Office"
+  },
+  "courierDelivery": "Курьер",
+  "@courierDelivery": {
+    "description": "Courier"
+  },
+  "pickupDelivery": "Самовывоз",
+  "@pickupDelivery": {
+    "description": "Pickup"
   }
 }
