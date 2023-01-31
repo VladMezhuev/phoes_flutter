@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../gen/assets.gen.dart';
 import '../catalog/phone_item_model.dart';
@@ -57,7 +58,12 @@ class PhoneDetailScreen extends StatelessWidget {
                       children: [
                         const Text('100'),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.goNamed(
+                              'order',
+                              extra: model,
+                            );
+                          },
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(Colors.orange),
                           ),
