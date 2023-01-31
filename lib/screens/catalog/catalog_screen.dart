@@ -9,7 +9,6 @@ import '../../l10n/locale_provider.dart';
 import 'catalog_bloc/catalog_bloc.dart';
 
 class CatalogScreen extends StatelessWidget {
-
   CatalogScreen({Key? key}) : super(key: key);
 
   final localeRU = const Locale("ru");
@@ -20,46 +19,45 @@ class CatalogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CatalogBloc>(
-      create: (context) => CatalogBloc(phonesRepository: phonesRepository)..add(const GetPhonesList()),
+      create: (context) => CatalogBloc(phonesRepository: phonesRepository)
+        ..add(const GetPhonesList()),
       child: Builder(builder: (context) {
         return Scaffold(
           appBar: AppBar(
-              backgroundColor: Colors.orange,
-              elevation: 0,
               title: Row(
-                children: [
-                  Text(
-                    AppLocalizations.of(context).catalog,
-                    style: const TextStyle(
-                      fontSize: 24,
-                    ),
-                  ),
-                  const Spacer(),
-                  InkWell(
-                      onTap: () {
-                        context.read<LocaleProvider>().setLocale(localeRU);
-                      },
-                      child: Row(
-                        children: const [
-                          Icon(Icons.language, color: Colors.white),
-                          Text('RU', style: TextStyle(color: Colors.white))
-                        ],
-                      )),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  InkWell(
-                      onTap: () {
-                        context.read<LocaleProvider>().setLocale(localeEN);
-                      },
-                      child: Row(
-                        children: const [
-                          Icon(Icons.language, color: Colors.white),
-                          Text('EN', style: TextStyle(color: Colors.white))
-                        ],
-                      )),
-                ],
-              )),
+            children: [
+              Text(
+                AppLocalizations.of(context).catalog,
+                style: const TextStyle(
+                  fontSize: 24,
+                ),
+              ),
+              const Spacer(),
+              InkWell(
+                  onTap: () {
+                    context.read<LocaleProvider>().setLocale(localeRU);
+                  },
+                  child: Row(
+                    children: const [
+                      Icon(Icons.language, color: Colors.white),
+                      Text('RU', style: TextStyle(color: Colors.white))
+                    ],
+                  )),
+              const SizedBox(
+                width: 10,
+              ),
+              InkWell(
+                  onTap: () {
+                    context.read<LocaleProvider>().setLocale(localeEN);
+                  },
+                  child: Row(
+                    children: const [
+                      Icon(Icons.language, color: Colors.white),
+                      Text('EN', style: TextStyle(color: Colors.white))
+                    ],
+                  )),
+            ],
+          )),
           body: BlocBuilder<CatalogBloc, CatalogState>(
             builder: (context, state) {
               if (state.isLoading) {

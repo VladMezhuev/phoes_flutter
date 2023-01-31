@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:phone_app/screens/catalog/catalog_screen.dart';
 import 'package:phone_app/screens/catalog/phone_item_model.dart';
 import 'package:phone_app/screens/detail/phone_detail_screen.dart';
+import 'package:phone_app/screens/order/order_screen.dart';
 import 'package:provider/provider.dart';
 import 'l10n/support_locale.dart';
 
@@ -20,6 +21,12 @@ void main() {
           builder: (context, provider, child) {
             return MaterialApp.router(
               debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                appBarTheme: const AppBarTheme(
+                  color: Colors.orange,
+                  elevation: 0,
+                ),
+              ),
               routerConfig: _router,
               localizationsDelegates: const [
                 AppLocalizations.delegate,
@@ -50,6 +57,15 @@ final _router = GoRouter(
           path: 'details',
           builder: (BuildContext context, GoRouterState state) {
             return PhoneDetailScreen(
+              model: state.extra as PhoneItem,
+            );
+          },
+        ),
+        GoRoute(
+          name: 'order',
+          path: 'order',
+          builder: (BuildContext context, GoRouterState state) {
+            return OrderScreen(
               model: state.extra as PhoneItem,
             );
           },

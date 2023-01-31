@@ -25,13 +25,7 @@ class PhoneItemCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            InkWell(
-              onTap: () => context.goNamed(
-                'details',
-                extra: phone,
-              ),
-              child: _PhoneCardImageWidget(image: phone.image),
-            ),
+            _PhoneCardImageWidget(phone: phone),
             _PhoneCartTitleWidget(phone: phone),
             Container(
               decoration: const BoxDecoration(
@@ -51,7 +45,10 @@ class PhoneItemCard extends StatelessWidget {
                     icon: setFavoriteIcon(phone.isFavorite),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () => context.goNamed(
+                      'order',
+                      extra: phone,
+                    ),
                     icon: const Icon(
                       Icons.add_shopping_cart,
                       color: Colors.white,
@@ -69,19 +66,25 @@ class PhoneItemCard extends StatelessWidget {
 }
 
 class _PhoneCardImageWidget extends StatelessWidget {
-  const _PhoneCardImageWidget({Key? key, required this.image})
+  const _PhoneCardImageWidget({Key? key, required this.phone})
       : super(key: key);
 
-  final String image;
+  final PhoneItem phone;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
-      child: Image.asset(
-        image,
-        height: 140,
+      child: InkWell(
+        onTap: () => context.goNamed(
+          'details',
+          extra: phone,
+        ),
+        child: Image.asset(
+          phone.image,
+          height: 140,
+        ),
       ),
     );
   }
@@ -107,10 +110,14 @@ class _PhoneCartTitleWidget extends StatelessWidget {
             bottom: BorderSide(width: 1, color: Colors.orangeAccent),
           )),
       child: TextButton(
-          onPressed: () => context.goNamed(
-                'details',
-                extra: phone,
-              ),
+        onPressed: () => context.goNamed(
+          'details',
+          extra: phone,
+        ),
+          // onPressed: () => context.goNamed(
+          //       'details',
+          //       extra: phone,
+          //     ),
           child: Text(
             phone.title,
             style: const TextStyle(
