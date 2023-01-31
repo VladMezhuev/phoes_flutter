@@ -4,6 +4,21 @@
     "description": "Title of catalog screen"
   },
 
+  "colorBlockTitle": "Color",
+  "deliveryBlockTitle": "Delivery",
+  "contactsBlockTitle": "Contacts",
+  "notesBlockTitle": "Notes",
+
+  "nameHintInput": "Name",
+  "phoneHintInput": "Phone",
+  "emailHintInput": "Email",
+  "deliveryAddressHintInput": "Post office address",
+  "commentsHintInput": "Comments",
+  "callMe": "Don't call me",
+
+  "cancelButton": "Cancel",
+  "orderButton": "Order",
+
   "blackColor": "black",
   "@blackColor": {
     "description": "Black color"

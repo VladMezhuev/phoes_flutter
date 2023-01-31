@@ -4,6 +4,21 @@
     "description": "Title of catalog screen"
   },
 
+  "colorBlockTitle": "Цвет",
+  "deliveryBlockTitle": "Доставка",
+  "contactsBlockTitle": "Контактные данные",
+  "notesBlockTitle": "Примечания",
+
+  "nameHintInput": "Имя",
+  "phoneHintInput": "Телефон",
+  "emailHintInput": "Электронная почта",
+  "deliveryAddressHintInput": "Адрес почтового отделения",
+  "commentsHintInput": "Комментарии",
+  "callMe": "Не перезванивать",
+
+  "cancelButton": "Отмена",
+  "orderButton": "Заказать",
+
   "blackColor": "Черный",
   "@blackColor": {
     "description": "Black color"

@@ -50,7 +50,7 @@ class OrderScreen extends StatelessWidget {
                             const SizedBox(
                               height: 20,
                             ),
-                            const TitleWidget(title: 'Цвет'),
+                            TitleWidget(title: AppLocalizations.of(context).colorBlockTitle),
                             const ColorRadioGroup(),
                             const SizedBox(
                               height: 20,
@@ -59,21 +59,21 @@ class OrderScreen extends StatelessWidget {
                             const SizedBox(
                               height: 20,
                             ),
-                            const TitleWidget(title: 'Доставка'),
+                            TitleWidget(title: AppLocalizations.of(context).deliveryBlockTitle),
                             const DeliveryRadioGroup(),
                             TextFormField(
-                              decoration: const InputDecoration(
-                                  hintText: 'Адрес почтового отделения'),
+                              decoration: InputDecoration(
+                                  hintText: AppLocalizations.of(context).deliveryAddressHintInput),
                             ),
                             const SizedBox(
                               height: 20,
                             ),
-                            const TitleWidget(title: 'Примечания'),
+                            TitleWidget(title: AppLocalizations.of(context).notesBlockTitle),
                             const CallCheckbox(),
                             TextFormField(
-                              decoration: const InputDecoration(
-                                  hintText: 'Комментарии',
-                                  border: OutlineInputBorder()),
+                              decoration: InputDecoration(
+                                  hintText: AppLocalizations.of(context).commentsHintInput,
+                                  border: const OutlineInputBorder()),
                               maxLines: 5,
                             ),
                             const SizedBox(
@@ -91,7 +91,7 @@ class OrderScreen extends StatelessWidget {
                                       backgroundColor:
                                           MaterialStateProperty.all(Colors.red),
                                     ),
-                                    child: const Text('Отмена'),
+                                    child: Text(AppLocalizations.of(context).cancelButton),
                                   ),
                                 ),
                                 const SizedBox(
@@ -110,7 +110,7 @@ class OrderScreen extends StatelessWidget {
                                           MaterialStateProperty.all(
                                               Colors.green),
                                     ),
-                                    child: const Text('Заказать'),
+                                    child: Text(AppLocalizations.of(context).orderButton),
                                   ),
                                 ),
                               ],
@@ -253,25 +253,25 @@ class _UserInfoState extends State<UserInfo> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const TitleWidget(title: 'Контактные данные'),
+        TitleWidget(title: AppLocalizations.of(context).contactsBlockTitle),
         TextField(
-          decoration: const InputDecoration(
-            hintText: 'Имя',
+          decoration: InputDecoration(
+            hintText: AppLocalizations.of(context).nameHintInput,
           ),
           onChanged: (value) {
             context.read<OrderBloc>().add(GetUserName(value));
           },
         ),
         TextField(
-            decoration: const InputDecoration(
-              hintText: 'Телефон',
+            decoration: InputDecoration(
+              hintText: AppLocalizations.of(context).phoneHintInput,
             ),
             onChanged: (value) {
               context.read<OrderBloc>().add(GetUserPhone(value));
             }),
         TextField(
-          decoration: const InputDecoration(
-            hintText: 'Электронная почта',
+          decoration: InputDecoration(
+            hintText: AppLocalizations.of(context).emailHintInput,
           ),
           onChanged: (value) {
             context.read<OrderBloc>().add(GetUserEmail(value));
@@ -366,7 +366,7 @@ class _CallCheckboxState extends State<CallCheckbox> {
         setState(() => isChecked = value!);
         context.read()<OrderBloc>().add(GetNeedToCall(value!));
       },
-      title: const Text('Не перезванивать'),
+      title: Text(AppLocalizations.of(context).callMe),
       controlAffinity: ListTileControlAffinity.leading,
     );
   }
