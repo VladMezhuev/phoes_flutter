@@ -65,5 +65,6 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     );
     emit(state.copyWith(isLoading: false));
     emit(state.copyWith(orderCreated: true));
+    emit(state.copyWith(orderCreated: false));
   }
 }

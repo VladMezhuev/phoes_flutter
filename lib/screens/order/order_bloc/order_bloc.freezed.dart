@@ -1618,11 +1618,11 @@ class __$$_OrderStateCopyWithImpl<$Res>
 
 class _$_OrderState implements _OrderState {
   const _$_OrderState(
-      [this.color = '',
+      [this.color = 'white',
       this.name = '',
       this.email = '',
       this.phone = '',
-      this.delivery = '',
+      this.delivery = '0',
       this.needToCall = false,
       this.comment = '',
       this.isLoading = false,

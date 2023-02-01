@@ -6,6 +6,8 @@ import 'package:phone_app/data/order_repo.dart';
 import 'package:phone_app/screens/catalog/phone_item_model.dart';
 import 'package:phone_app/screens/order/order_bloc/order_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/svg.dart';
+import '../../gen/assets.gen.dart';
 
 class OrderScreen extends StatelessWidget {
   OrderScreen({Key? key, required this.model}) : super(key: key);
@@ -24,12 +26,12 @@ class OrderScreen extends StatelessWidget {
         body: BlocListener<OrderBloc, OrderState>(
           listener: (context, state) {
             if (state.orderCreated) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text(
-                    'Order created, color: ${state.color} name: ${state.name}, phone: ${state.phone}, delivery: ${state.delivery}'),
-                duration: const Duration(seconds: 10),
-              ));
-              context.go('/');
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return const OrderDialog();
+                },
+              );
             }
           },
           child: BlocBuilder<OrderBloc, OrderState>(
@@ -50,7 +52,9 @@ class OrderScreen extends StatelessWidget {
                             const SizedBox(
                               height: 20,
                             ),
-                            TitleWidget(title: AppLocalizations.of(context).colorBlockTitle),
+                            TitleWidget(
+                                title: AppLocalizations.of(context)
+                                    .colorBlockTitle),
                             ColorRadioGroup(currentRadio: state.color),
                             const SizedBox(
                               height: 20,
@@ -59,20 +63,26 @@ class OrderScreen extends StatelessWidget {
                             const SizedBox(
                               height: 20,
                             ),
-                            TitleWidget(title: AppLocalizations.of(context).deliveryBlockTitle),
+                            TitleWidget(
+                                title: AppLocalizations.of(context)
+                                    .deliveryBlockTitle),
                             DeliveryRadioGroup(currentMethod: state.delivery),
                             TextFormField(
                               decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context).deliveryAddressHintInput),
+                                  hintText: AppLocalizations.of(context)
+                                      .deliveryAddressHintInput),
                             ),
                             const SizedBox(
                               height: 20,
                             ),
-                            TitleWidget(title: AppLocalizations.of(context).notesBlockTitle),
+                            TitleWidget(
+                                title: AppLocalizations.of(context)
+                                    .notesBlockTitle),
                             const CallCheckbox(),
                             TextFormField(
                               decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context).commentsHintInput,
+                                  hintText: AppLocalizations.of(context)
+                                      .commentsHintInput,
                                   border: const OutlineInputBorder()),
                               maxLines: 5,
                             ),
@@ -91,7 +101,8 @@ class OrderScreen extends StatelessWidget {
                                       backgroundColor:
                                           MaterialStateProperty.all(Colors.red),
                                     ),
-                                    child: Text(AppLocalizations.of(context).cancelButton),
+                                    child: Text(AppLocalizations.of(context)
+                                        .cancelButton),
                                   ),
                                 ),
                                 const SizedBox(
@@ -110,7 +121,8 @@ class OrderScreen extends StatelessWidget {
                                           MaterialStateProperty.all(
                                               Colors.green),
                                     ),
-                                    child: Text(AppLocalizations.of(context).orderButton),
+                                    child: Text(AppLocalizations.of(context)
+                                        .orderButton),
                                   ),
                                 ),
                               ],
@@ -125,6 +137,100 @@ class OrderScreen extends StatelessWidget {
             },
           ),
         ),
+      ),
+    );
+  }
+}
+
+class OrderDialog extends StatelessWidget {
+  const OrderDialog({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Stack(
+        children: [
+          Positioned(
+            top: 0,
+            right: 0,
+            child: IconButton(
+              onPressed: () {
+                context.go('/');
+              },
+              icon: const Icon(Icons.close),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 30,
+              horizontal: 20,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  Assets.icons.infoCircle,
+                  width: 130,
+                  height: 130,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  'Информационный диалог',
+                  style: TextStyle(
+                    fontSize: 28,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  'Заказ успешно создан',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black45,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      context.go('/');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(double.infinity, 50),
+                      elevation: 0,
+                      side: const BorderSide(
+                          color: Colors.orange, width: 1),
+                      backgroundColor: Colors.white,
+                    ),
+                    child: Text(
+                      'Ok'.toUpperCase(),
+                      style: const TextStyle(
+                        color: Colors.orange,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -283,7 +389,8 @@ class _UserInfoState extends State<UserInfo> {
 }
 
 class ColorRadioGroup extends StatelessWidget {
-  const ColorRadioGroup({Key? key, required this.currentRadio}) : super(key: key);
+  const ColorRadioGroup({Key? key, required this.currentRadio})
+      : super(key: key);
 
   final String currentRadio;
 
@@ -324,7 +431,8 @@ class ColorRadioGroup extends StatelessWidget {
 }
 
 class DeliveryRadioGroup extends StatelessWidget {
-  const DeliveryRadioGroup({Key? key, required this.currentMethod}) : super(key: key);
+  const DeliveryRadioGroup({Key? key, required this.currentMethod})
+      : super(key: key);
 
   final String currentMethod;
 

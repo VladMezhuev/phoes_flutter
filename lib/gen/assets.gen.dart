@@ -9,6 +9,16 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/info-circle.svg
+  String get infoCircle => 'assets/icons/info-circle.svg';
+
+  /// List of all assets
+  List<String> get values => [infoCircle];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -60,6 +70,7 @@ class $AssetsImagesGen {
 class Assets {
   Assets._();
 
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
