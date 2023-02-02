@@ -1,6 +1,8 @@
 import '../gen/assets.gen.dart';
 import '../screens/catalog/phone_item_model.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class PhonesRepository {
   List<PhoneItem> getPhones() {
     return [

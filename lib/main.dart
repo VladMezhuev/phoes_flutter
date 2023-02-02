@@ -12,7 +12,8 @@ import 'package:provider/provider.dart';
 import 'l10n/support_locale.dart';
 
 void main() {
-  setup();
+  // setup();
+  configureDependencies();
   runApp(
     ChangeNotifierProvider(
       create: (context) => LocaleProvider(),

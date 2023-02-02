@@ -5,8 +5,6 @@ class CatalogState with _$CatalogState {
   const factory CatalogState([
     @Default(false) bool isLoading,
     @Default([]) List<PhoneItem> phones,
+    @Default([]) List<int> favoritePhones,
   ]) = _CatalogState;
 }
-
-
-

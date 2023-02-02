@@ -314,6 +314,7 @@ abstract class TogglePhoneFavorite implements CatalogEvent {
 mixin _$CatalogState {
   bool get isLoading => throw _privateConstructorUsedError;
   List<PhoneItem> get phones => throw _privateConstructorUsedError;
+  List<int> get favoritePhones => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CatalogStateCopyWith<CatalogState> get copyWith =>
@@ -326,7 +327,7 @@ abstract class $CatalogStateCopyWith<$Res> {
           CatalogState value, $Res Function(CatalogState) then) =
       _$CatalogStateCopyWithImpl<$Res, CatalogState>;
   @useResult
-  $Res call({bool isLoading, List<PhoneItem> phones});
+  $Res call({bool isLoading, List<PhoneItem> phones, List<int> favoritePhones});
 }
 
 /// @nodoc
@@ -344,6 +345,7 @@ class _$CatalogStateCopyWithImpl<$Res, $Val extends CatalogState>
   $Res call({
     Object? isLoading = null,
     Object? phones = null,
+    Object? favoritePhones = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -354,6 +356,10 @@ class _$CatalogStateCopyWithImpl<$Res, $Val extends CatalogState>
           ? _value.phones
           : phones // ignore: cast_nullable_to_non_nullable
               as List<PhoneItem>,
+      favoritePhones: null == favoritePhones
+          ? _value.favoritePhones
+          : favoritePhones // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ) as $Val);
   }
 }
@@ -366,7 +372,7 @@ abstract class _$$_CatalogStateCopyWith<$Res>
       __$$_CatalogStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, List<PhoneItem> phones});
+  $Res call({bool isLoading, List<PhoneItem> phones, List<int> favoritePhones});
 }
 
 /// @nodoc
@@ -382,6 +388,7 @@ class __$$_CatalogStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? phones = null,
+    Object? favoritePhones = null,
   }) {
     return _then(_$_CatalogState(
       null == isLoading
@@ -392,6 +399,10 @@ class __$$_CatalogStateCopyWithImpl<$Res>
           ? _value._phones
           : phones // ignore: cast_nullable_to_non_nullable
               as List<PhoneItem>,
+      null == favoritePhones
+          ? _value._favoritePhones
+          : favoritePhones // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
   }
 }
@@ -400,8 +411,11 @@ class __$$_CatalogStateCopyWithImpl<$Res>
 
 class _$_CatalogState implements _CatalogState {
   const _$_CatalogState(
-      [this.isLoading = false, final List<PhoneItem> phones = const []])
-      : _phones = phones;
+      [this.isLoading = false,
+      final List<PhoneItem> phones = const [],
+      final List<int> favoritePhones = const []])
+      : _phones = phones,
+        _favoritePhones = favoritePhones;
 
   @override
   @JsonKey()
@@ -415,9 +429,18 @@ class _$_CatalogState implements _CatalogState {
     return EqualUnmodifiableListView(_phones);
   }
 
+  final List<int> _favoritePhones;
+  @override
+  @JsonKey()
+  List<int> get favoritePhones {
+    if (_favoritePhones is EqualUnmodifiableListView) return _favoritePhones;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favoritePhones);
+  }
+
   @override
   String toString() {
-    return 'CatalogState(isLoading: $isLoading, phones: $phones)';
+    return 'CatalogState(isLoading: $isLoading, phones: $phones, favoritePhones: $favoritePhones)';
   }
 
   @override
@@ -427,12 +450,17 @@ class _$_CatalogState implements _CatalogState {
             other is _$_CatalogState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            const DeepCollectionEquality().equals(other._phones, _phones));
+            const DeepCollectionEquality().equals(other._phones, _phones) &&
+            const DeepCollectionEquality()
+                .equals(other._favoritePhones, _favoritePhones));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, isLoading, const DeepCollectionEquality().hash(_phones));
+      runtimeType,
+      isLoading,
+      const DeepCollectionEquality().hash(_phones),
+      const DeepCollectionEquality().hash(_favoritePhones));
 
   @JsonKey(ignore: true)
   @override
@@ -443,12 +471,16 @@ class _$_CatalogState implements _CatalogState {
 
 abstract class _CatalogState implements CatalogState {
   const factory _CatalogState(
-      [final bool isLoading, final List<PhoneItem> phones]) = _$_CatalogState;
+      [final bool isLoading,
+      final List<PhoneItem> phones,
+      final List<int> favoritePhones]) = _$_CatalogState;
 
   @override
   bool get isLoading;
   @override
   List<PhoneItem> get phones;
+  @override
+  List<int> get favoritePhones;
   @override
   @JsonKey(ignore: true)
   _$$_CatalogStateCopyWith<_$_CatalogState> get copyWith =>

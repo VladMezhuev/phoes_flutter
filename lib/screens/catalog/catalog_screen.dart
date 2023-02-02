@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phone_app/data/phones_repository.dart';
+import 'package:phone_app/data/shared_pref.dart';
 import 'package:phone_app/screens/catalog/phone_item_widget.dart';
 
 import '../../l10n/locale_provider.dart';
@@ -15,12 +16,15 @@ class CatalogScreen extends StatelessWidget {
   final localeEN = const Locale("en");
 
   final phonesRepository = GetIt.instance<PhonesRepository>();
+  final appPreferences = GetIt.instance<AppPreferences>();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CatalogBloc>(
-      create: (context) => CatalogBloc(phonesRepository: phonesRepository)
-        ..add(const GetPhonesList()),
+      create: (context) => CatalogBloc(
+        phonesRepository: phonesRepository,
+        appPreferences: appPreferences,
+      )..add(const GetPhonesList()),
       child: Builder(builder: (context) {
         return Scaffold(
           appBar: AppBar(
