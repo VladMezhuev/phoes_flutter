@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
-@injectable
+@singleton
 class OrderRepository {
 
   Future<void> create({

@@ -5,7 +5,7 @@ abstract class _SharedPreferencesKeys {
   static const favoritePhonesList = 'favorite_hones_list';
 }
 
-@injectable
+@singleton
 class AppPreferences {
 
   final _storage = SharedPreferences.getInstance();

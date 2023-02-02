@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:phone_app/data/phones_repository.dart';
 import 'package:phone_app/data/shared_pref.dart';
 
@@ -11,6 +12,7 @@ part 'catalog_state.dart';
 
 part 'catalog_bloc.freezed.dart';
 
+@injectable
 class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   final PhonesRepository phonesRepository;
   final AppPreferences appPreferences;

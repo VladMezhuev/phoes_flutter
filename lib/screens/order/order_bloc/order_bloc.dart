@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../data/order_repo.dart';
 
@@ -9,6 +10,7 @@ part 'order_state.dart';
 
 part 'order_bloc.freezed.dart';
 
+@injectable
 class OrderBloc extends Bloc<OrderEvent, OrderState> {
   final OrderRepository orderRepository;
 

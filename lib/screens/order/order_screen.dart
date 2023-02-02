@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:phone_app/data/order_repo.dart';
+import 'package:phone_app/di.dart';
 import 'package:phone_app/screens/catalog/phone_item_model.dart';
 import 'package:phone_app/screens/order/order_bloc/order_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -18,7 +19,7 @@ class OrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OrderBloc(orderRepository: orderRepository),
+      create: (context) => getIt<OrderBloc>(),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Order Screen'),
